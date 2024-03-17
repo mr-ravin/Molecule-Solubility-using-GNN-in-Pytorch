@@ -3,7 +3,7 @@ Using Graph Neural Networks for estimating water solubility of a molecule struct
 
 Dataset:  ESOL is a water solubility prediction dataset consisting of 1128 samples.
 
-![structure image](https://github.com/mr-ravin/Molecule-Solubility-using-GNN-in-Pytorch/blob/main/structure.jpg?raw=true)
+![structure image](https://github.com/mr-ravin/Molecule-Solubility-using-GNN-in-Pytorch/blob/main/structure.png?raw=true)
 
 #### File Structure
 ```
