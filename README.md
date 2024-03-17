@@ -20,11 +20,13 @@ Dataset:  ESOL is a water solubility prediction dataset consisting of 1128 sampl
 ```python
 python3 main.py --mode train --epoch 2000
 ```
+![train image](https://github.com/mr-ravin/Molecule-Solubility-using-GNN-in-Pytorch/blob/main/result/training_analysis.png?raw=true)
 
 ### Testing
 ```python
 python3 main.py --mode test
 ```
+![test image](https://github.com/mr-ravin/Molecule-Solubility-using-GNN-in-Pytorch/blob/main/result/testing_analysis.png?raw=true)
 
 ```
 THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE 
