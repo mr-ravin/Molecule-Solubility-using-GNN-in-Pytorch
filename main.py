@@ -30,7 +30,7 @@ gcn_model = GCN(num_features)
 # Root mean squared error
 loss_fn = torch.nn.MSELoss()
 optimizer = torch.optim.Adam(gcn_model.parameters(), lr) 
-lr_scheduler = StepLR(optimizer, step_size=100, gamma=0.05)
+lr_scheduler = StepLR(optimizer, step_size=250, gamma=0.05)
 
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -102,17 +102,17 @@ if MODE == "train":
         valid_loss = valid_loss.detach().numpy()
         train_losses.append(np.float32(train_loss))
         valid_losses.append(np.float32(valid_loss))
-        # if epoch % 5 == 0:
+        if epoch % 100 == 0:
             # if valid_loss < saved_validation_loss:
             #     saved_validation_loss = valid_loss
             #     os.system("rm ./weights/*.pt")
             #     torch.save(model.state_dict(),"./weights/"+str(epoch)+".pt")
-            #     print("Weight saved at epoch: ", epoch)
-            # print(f"Epoch {epoch} | Train Loss {train_loss} | Valid Loss {valid_loss}")
-        os.system("rm ./weights/*.pt")
-        torch.save(model.state_dict(),"./weights/"+str(epoch)+".pt")
-        print("Weight saved at epoch: ", epoch)           
-        print(f"Epoch {epoch} | Train Loss {train_loss} | Valid Loss {valid_loss}")
+            #     print("Weight saved at epoch: ", epoch)           
+            #     print(f"Epoch {epoch} | Train Loss {train_loss} | Valid Loss {valid_loss}")
+            os.system("rm ./weights/*.pt")
+            torch.save(model.state_dict(),"./weights/"+str(epoch)+".pt")
+            print("Weight saved at epoch: ", epoch)           
+            print(f"Epoch {epoch} | Train Loss {train_loss} | Valid Loss {valid_loss}")
     save_plot(train_loss_list=train_losses, valid_loss_list=valid_losses)
 
 
