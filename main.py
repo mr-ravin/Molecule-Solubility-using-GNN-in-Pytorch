@@ -30,7 +30,7 @@ gcn_model = GCN(num_features)
 # Root mean squared error
 loss_fn = torch.nn.MSELoss()
 optimizer = torch.optim.Adam(gcn_model.parameters(), lr) 
-lr_scheduler = StepLR(optimizer, step_size=20, gamma=0.05)
+lr_scheduler = StepLR(optimizer, step_size=100, gamma=0.05)
 
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
