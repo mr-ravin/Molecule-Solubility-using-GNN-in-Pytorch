@@ -9,7 +9,9 @@ def save_plot(train_loss_list=[], valid_loss_list=[], test_loss_list=[], filter_
         red_patch = mpatches.Patch(color='red', label='Train Loss')
         blue_patch = mpatches.Patch(color='blue', label='Valid Loss')
         x_axis_data = list(range(1,len(train_loss_list)+1))
+        print(x_axis_data)
         x_axis_data = [x * filter_bucket for x in x_axis_data]
+        print(x_axis_data, train_loss_list, valid_loss_list)
         sns.lineplot(x=x_axis_data, y=train_loss_list, color='red', alpha=0.75)
         sns.lineplot(x=x_axis_data, y=valid_loss_list, color='blue', alpha=0.75)
         plt.xlabel("Epoch")
@@ -30,11 +32,11 @@ def save_plot(train_loss_list=[], valid_loss_list=[], test_loss_list=[], filter_
         plt.savefig('./result/testing_analysis.png')
         print("Saved ./result/testing_analysis.png")
 
-def filtered_result(value_list, filter_bucket=100):
+def filtered_result(value_list, filter_bucket=20):
     result = []
     len_value_list = len(value_list)
     collect_at_each = int(len_value_list/filter_bucket)
     for idx in range(1, len_value_list+1):
         if idx % collect_at_each == 0:
             result.append(value_list[idx-1])
-    return result
+    return result, collect_at_each

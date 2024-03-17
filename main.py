@@ -6,7 +6,7 @@ import glob
 import numpy as np
 from torch.optim.lr_scheduler import StepLR
 from torch_geometric.datasets import MoleculeNet
-from torch_geometric.data import DataLoader
+from torch_geometric.loader import DataLoader
 from gnn_model import GCN
 from utils import save_plot, filtered_result
 
@@ -113,9 +113,9 @@ if MODE == "train":
             torch.save(model.state_dict(),"./weights/"+str(epoch)+".pt")
             print("Weight saved at epoch: ", epoch)           
             print(f"Epoch {epoch} | Train Loss {train_loss} | Valid Loss {valid_loss}")
-    train_losses = filtered_result(train_losses)
-    valid_losses = filtered_result(valid_losses)
-    save_plot(train_loss_list=train_losses, valid_loss_list=valid_losses)
+    train_losses, collect_at_each = filtered_result(train_losses)
+    valid_losses, collect_at_each = filtered_result(valid_losses)
+    save_plot(train_loss_list=train_losses, valid_loss_list=valid_losses, filter_bucket=collect_at_each)
 
 
 if MODE in ["test", "train"]:
