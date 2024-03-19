@@ -1,7 +1,7 @@
 import torch
-from torch.nn import Linear
+import torch.nn as nn 
 import torch.nn.functional as F 
-from torch_geometric.nn import GCNConv, TopKPooling, global_mean_pool
+from torch_geometric.nn import GCNConv
 from torch_geometric.nn import global_mean_pool as gap, global_max_pool as gmp
 embedding_size = 64
 
@@ -18,7 +18,7 @@ class GCN(torch.nn.Module):
         self.conv3 = GCNConv(embedding_size, embedding_size)
 
         # Output layer
-        self.out = Linear(embedding_size*2, 1)
+        self.out = nn.Linear(embedding_size*2, 1)
 
     def forward(self, x, edge_index, batch_index):
         # First Conv layer
